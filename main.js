@@ -114,7 +114,9 @@
                 t_status = 'FIXED_BY_RERUN'
               }else if (row_status.includes('rebuild') && row_action.includes('fix')){
                 t_status = 'FIXED_BY_CODE_UPDATE'
-              } 
+              }else if (row_status.includes('for verification') && row_action.includes('fix')){
+                t_status = 'FIXED_BY_CODE_UPDATE'    
+              }
               acc[prod] = acc[prod] || {};
               acc[prod][t_status] = acc[prod][t_status] || {};
               acc[prod][t_status][row_code] = acc[prod][t_status][row_code] || [];
