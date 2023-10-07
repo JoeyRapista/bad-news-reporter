@@ -57,11 +57,13 @@
                   readXlsxFile(file).then((rows) => { 
                   this.tableData = this.convertArrayToObjects(rows) 
                   const grouped = this.groupObjects(this.tableData)
-                  _json = JSON.stringify(grouped, null, 4)
+                  const _json = JSON.stringify(grouped, null, 4)
                   this.report = _json.replace(/["{}\[\],]/g, '');
               })  
             }else{
-              console.log('No file')
+              this.alertMessage = 'No file'
+              this.showAlertMessage = true
+              setTimeout(() => { this.showAlertMessage = false; }, 3000)
             }
             
         },
@@ -80,8 +82,9 @@
           }) 
           return tickets
           } catch (error) {
-            console.log('error in converting array to objects')
-            console.log(error)
+              this.alertMessage = `Error while converting array to objects: ${err}`
+              this.showAlertMessage = true
+              setTimeout(() => { this.showAlertMessage = false; }, 3000)
           }
         },
 
@@ -127,8 +130,9 @@
           }, {});
           return grouped_obj
           } catch (error) {
-            console.log('error in grouping the converted objects')
-            console.log(error)
+              this.alertMessage = `Error while grouping converted to array: ${err}`
+              this.showAlertMessage = true
+              setTimeout(() => { this.showAlertMessage = false; }, 3000)
           }
         },
 
