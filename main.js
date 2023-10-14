@@ -111,15 +111,20 @@
               const row_status = row.status.toLowerCase()
               const row_action = row.action.toLowerCase()
               const row_code = `${row.code.toUpperCase()} ${this.company_code[row.code.toUpperCase()].toUpperCase()}`  
+
               if (row_status.includes('in progress')){
                 t_status = 'IN_PROGRESS'
-              }else if (row_status.includes('for verification') && row_action.includes('rerun')){
+              }
+              if (row_status.includes('for verification') && row_action.includes('rerun')){
                 t_status = 'FIXED_BY_RERUN'
-              }else if (row_status.includes('rebuild') && row_action.includes('fix')){
+              }
+              if (row_status.includes('rebuild') && row_action.includes('fix')){
                 t_status = 'FIXED_BY_CODE_UPDATE'
-              }else if (row_status.includes('for verification') && row_action.includes('fix')){
+              }
+              if (row_status.includes('for verification') && row_action.includes('fix')){
                 t_status = 'FIXED_BY_CODE_UPDATE'    
               }
+              
               acc[prod] = acc[prod] || {};
               acc[prod][t_status] = acc[prod][t_status] || {};
               acc[prod][t_status][row_code] = acc[prod][t_status][row_code] || [];
