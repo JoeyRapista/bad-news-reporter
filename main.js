@@ -78,12 +78,12 @@
                     status: row[8] ? row[8].toString() : '',
                   }  
               })  
+              return tickets
             } catch (error) {
                 this.alertMessage = `Error while converting array to objects: ${err}`
                 this.showAlertMessage = true
                 setTimeout(() => { this.showAlertMessage = false; }, 3000)
             }
-          return tickets
         },
 
         // HELPER FUNCTION
@@ -130,12 +130,12 @@
           
               return acc;
           }, {}); 
+          return grouped_obj
           } catch (error) {
               this.alertMessage = `Error while grouping converted to array: ${error}`
               this.showAlertMessage = true
               setTimeout(() => { this.showAlertMessage = false; }, 3000)
           }
-          return grouped_obj
         },
 
         // COPY TO CLIP BOARD
