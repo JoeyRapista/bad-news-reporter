@@ -6,14 +6,12 @@
         alertMessage: '',
         showAlertMessage: false,
         company_prods: {
-          mumbai:  [ '200','100','F00','O00','610','H10','P10','T10','U10','Y10','320','420','520','620','720','820','920','A20','B20','C20','D20' ] ,
-          detail:  [ 'U10','Y10','Z10','W10','G10' ], 
+          mumbai:  [ '200','F00','O00','610','H10','P10','T10','U10','Y10','320','420','520','620','720','820','920','A20','B20','C20','D20', 'U10','Y10','Z10','W10','G10' ],
           ms_iso:  [ 'A00','C00','510' ]
         },
         company_code : {
           "A00" : "MS PRICE",
-          "110" : "NINTENDO BENELUX",
-          "100" : "GARMIN",
+          "110" : "NINTENDO BENELUX", 
           "200" : "ZOUND",
           "E00" : "FRONTLINE",
           "K00" : "RAZER",
@@ -71,21 +69,21 @@
         // HELPER FUNCTION
         convertArrayToObjects(rows){
           try {
-           const tickets = rows.slice(1).map((row) => { 
-              return {
-                code: row[0] ? row[0].toString().slice(0, 3) : '',
-                website: row[2] ? row[2].toString() : '',
-                issue: row[4] ? row[4].toString() : '',
-                action: row[6] || '',
-                status: row[8] ? row[8].toString() : '',
-              }  
-          }) 
+              const tickets = rows.slice(1).map((row) => { 
+                  return {
+                    code: row[0] ? row[0].toString().slice(0, 3) : '',
+                    website: row[2] ? row[2].toString() : '',
+                    issue: row[4] ? row[4].toString() : '',
+                    action: row[6] || '',
+                    status: row[8] ? row[8].toString() : '',
+                  }  
+              })  
+            } catch (error) {
+                this.alertMessage = `Error while converting array to objects: ${err}`
+                this.showAlertMessage = true
+                setTimeout(() => { this.showAlertMessage = false; }, 3000)
+            }
           return tickets
-          } catch (error) {
-              this.alertMessage = `Error while converting array to objects: ${err}`
-              this.showAlertMessage = true
-              setTimeout(() => { this.showAlertMessage = false; }, 3000)
-          }
         },
 
         // HELPER FUNCTION
@@ -93,9 +91,8 @@
           try {
             grouped_obj = table.reduce((acc, row) => {  
               const mappings = [
-                { list: this.company_prods.mumbai, value: 'MUMBAI PRODUCTION' },
-                { list: this.company_prods.detail, value: 'DETAIL PRODUCTION' },
-                { list: this.company_prods.ms_iso, value: 'MS ISO PRODUCTION' },
+                { list: this.company_prods.mumbai, value: 'MUMBAI Technical Validation' },
+                { list: this.company_prods.ms_iso, value: 'MS ISO Technical Validation' },
               ];
               
               let prod = 'OTHERS';
@@ -132,13 +129,13 @@
               acc[prod][t_status][row_code].push(`${row.website} | ${row.issue}`);
           
               return acc;
-          }, {});
-          return grouped_obj
+          }, {}); 
           } catch (error) {
-              this.alertMessage = `Error while grouping converted to array: ${err}`
+              this.alertMessage = `Error while grouping converted to array: ${error}`
               this.showAlertMessage = true
               setTimeout(() => { this.showAlertMessage = false; }, 3000)
           }
+          return grouped_obj
         },
 
         // COPY TO CLIP BOARD
