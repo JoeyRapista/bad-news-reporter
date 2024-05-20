@@ -66,7 +66,7 @@
             
         },
 
-        // HELPER FUNCTION
+        // HELPER FUNCTIONS
         convertArrayToObjects(rows){
           try {
               const tickets = rows.slice(1).map((row) => { 
@@ -91,7 +91,7 @@
           try {
             grouped_obj = table.reduce((acc, row) => {  
               const mappings = [
-                { list: this.company_prods.mumbai, value: 'MUMBAI Technical Validation' },
+                { list: this.company_prods.mumbai, value: 'DSA Technical Validation' },
                 { list: this.company_prods.ms_iso, value: 'MS ISO Technical Validation' },
               ];
               
