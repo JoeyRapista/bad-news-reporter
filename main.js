@@ -10,6 +10,7 @@
           ms_iso:  [ 'A00','C00','510' ]
         },
         company_code : {
+          "401" : "Samsung Benelux",
           "A00" : "MS PRICE",
           "110" : "NINTENDO BENELUX", 
           "200" : "ZOUND",
