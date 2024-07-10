@@ -6,7 +6,7 @@
         alertMessage: '',
         showAlertMessage: false,
         company_prods: {
-          mumbai:  [ '200','F00','O00','610','H10','P10','T10','U10','Y10','320','420','520','620','720','820','920','A20','B20','C20','D20', 'U10','Y10','Z10','W10','G10' ],
+          mumbai:  [ 'X10','401', '200','F00','O00','610','H10','P10','T10','U10','Y10','320','420','520','620','720','820','920','A20','B20','C20','D20', 'U10','Y10','Z10','W10','G10' ],
           ms_iso:  [ 'A00','C00','510' ]
         },
         company_code : {
@@ -47,7 +47,9 @@
           "A20" : "John Deere",
           "B20" : "GN Hearing",
           "C20" : "Herbalife",
-          "D20" : "Jr Simplot"
+          "D20" : "Jr Simplot",
+          "X10" : "Demo EMEA",
+          "G01" : "Miwuakee"
         },
         // FUNCTION
         handled_generate_report() { 
